@@ -1,0 +1,497 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Talk-test-frameworks by jlucasps</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Talk-test-frameworks</h1>
+        <p>Presentation about front-end tests frameworks given on Front In BH 2014</p>
+
+        <p class="view"><a href="https://github.com/jlucasps/talk-test-frameworks">View the Project on GitHub <small>jlucasps/talk-test-frameworks</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/jlucasps/talk-test-frameworks/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jlucasps/talk-test-frameworks/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jlucasps/talk-test-frameworks">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="ui-test-frameworks" class="anchor" href="#ui-test-frameworks"><span class="octicon octicon-link"></span></a>UI Test Frameworks</h1>
+
+<p><br></p>
+
+<p>João Lucas &amp; Rafael Guedes</p>
+
+<p><br></p>
+
+<p>Front In BH - 2014</p>
+
+<hr><h2>
+<a name="quem-somos" class="anchor" href="#quem-somos"><span class="octicon octicon-link"></span></a>Quem somos?</h2>
+
+<h4>
+<a name="n%C3%A3o-n%C3%A3o-somos-mais-uma-dupla-sertaneja" class="anchor" href="#n%C3%A3o-n%C3%A3o-somos-mais-uma-dupla-sertaneja"><span class="octicon octicon-link"></span></a>Não, não somos mais uma dupla sertaneja!</h4>
+
+<hr><h2>
+<a name="quem-somos-1" class="anchor" href="#quem-somos-1"><span class="octicon octicon-link"></span></a>Quem somos?</h2>
+
+<ul>
+<li>
+<p><strong>João Lucas Santana</strong> ( <a href="https://github.com/jlucasps" class="user-mention">@jlucasps</a> )</p>
+
+<ul>
+<li>UI Engineer na Avenue Code</li>
+<li>Ruby e JavaScript developer</li>
+<li>Empreendedor por insistência</li>
+</ul>
+</li>
+<li>
+<p><strong>Rafael Guedes</strong> ( <a href="https://github.com/rafaelmenta" class="user-mention">@rafaelmenta</a> )</p>
+
+<ul>
+<li>UI Engineer na Avenue Code</li>
+<li>Desenvolvimento web desde 2007</li>
+<li>Testando em front-end desde 2013</li>
+</ul>
+</li>
+</ul><hr><h2>
+<a name="cen%C3%A1rio" class="anchor" href="#cen%C3%A1rio"><span class="octicon octicon-link"></span></a>Cenário</h2>
+
+<ul>
+<li>Javascript mal estruturado</li>
+<li>JS e CSS misturados com HTML</li>
+<li>Péssima rastreabilidade, reusabilidade e manuntenabilidade</li>
+</ul><p><br></p>
+
+<p>Resumindo:</p>
+
+<p><strong>CAOS</strong></p>
+
+<hr><h2>
+<a name="melhoramos" class="anchor" href="#melhoramos"><span class="octicon octicon-link"></span></a>Melhoramos</h2>
+
+<ul>
+<li>Separação do código</li>
+<li>Abstração de esturutras JS (e CSS)</li>
+<li>Frameworks!</li>
+</ul><hr><h2>
+<a name="aplica%C3%A7%C3%B5es-complexas" class="anchor" href="#aplica%C3%A7%C3%B5es-complexas"><span class="octicon octicon-link"></span></a>Aplicações complexas</h2>
+
+<h2>
+<a name="trazem-problemas-complexos" class="anchor" href="#trazem-problemas-complexos"><span class="octicon octicon-link"></span></a>trazem problemas complexos</h2>
+
+<p>Como previni-los?</p>
+
+<hr><h1>
+<a name="testes" class="anchor" href="#testes"><span class="octicon octicon-link"></span></a>Testes!</h1>
+
+<blockquote>
+<p>Os testes no código client-side passam a ter a mesma importância em relação ao server-side</p>
+</blockquote>
+
+<p><br></p>
+
+<p>Sim. Isso também significa integrá-los ao processo de build.</p>
+
+<hr><h2>
+<a name="ferramentas-de-testes" class="anchor" href="#ferramentas-de-testes"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<p><img src="img/tools.jpg" alt="Ferramentas de testes"></p>
+
+<hr><h2>
+<a name="ferramentas-de-testes-1" class="anchor" href="#ferramentas-de-testes-1"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<p><img src="img/jasmine.png" alt="Jasmine"></p>
+
+<ul>
+<li>Matchers customizados, spies, async, clock</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"Calculator"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
+    <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">calc</span> <span class="o">=</span> <span class="nx">Calculator</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should sum two numbers'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="ferrametnas-de-testes" class="anchor" href="#ferrametnas-de-testes"><span class="octicon octicon-link"></span></a>Ferrametnas de testes</h2>
+
+<p><img src="img/qunit.png" alt="QUnit"></p>
+
+<ul>
+<li>jQuery project</li>
+<li>Focado em testar Javascript no browser</li>
+<li>Framework, Modules, Tests, Assertions</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">(</span> <span class="s2">"Awesome module"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calc</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">teardown</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span> <span class="p">);</span>
+
+<span class="nx">test</span><span class="p">(</span> <span class="s2">"sum"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">deepEqual</span><span class="p">(</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Description"</span> <span class="p">);</span>
+    <span class="nx">equal</span><span class="p">(</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">),</span> <span class="s2">"6"</span><span class="p">,</span> <span class="s2">"Description"</span> <span class="p">);</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<hr><h2>
+<a name="ferramentas-de-testes-2" class="anchor" href="#ferramentas-de-testes-2"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<p><img src="img/mocha.png" alt="Mocha"></p>
+
+<ul>
+<li>Framework flexível e modular para node.js e browser</li>
+<li>Testes async e promisses</li>
+<li>Hooks <code>before, beforeEach, after, afterEach</code>
+</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"a test"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">foo</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">done</span><span class="p">();</span>
+        <span class="p">},</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">"should pass"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">equals</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="ferramentas-de-testes-3" class="anchor" href="#ferramentas-de-testes-3"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<p><img src="img/buster.png" alt="Buster"></p>
+
+<ul>
+<li>Framework flexível e modular para node.js e browser</li>
+<li>Integrado com Sinon.JS</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="nx">buster</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">expose</span><span class="p">();</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">"My thing"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">"has the foo and bar"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s2">"states the obvious"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="como-escolher-meu-framework" class="anchor" href="#como-escolher-meu-framework"><span class="octicon octicon-link"></span></a>Como escolher meu framework?</h2>
+
+<ul>
+<li>Estável</li>
+<li>Comunidade</li>
+<li>Compatível com tecnologias do projeto</li>
+<li>Modular</li>
+</ul><hr><h2>
+<a name="ferramentas-utilit%C3%A1rias" class="anchor" href="#ferramentas-utilit%C3%A1rias"><span class="octicon octicon-link"></span></a>Ferramentas utilitárias</h2>
+
+<p><img src="img/karma.png" alt="Karma"><img src="img/phantomjs.png" alt="PhantomJS"><img src="img/chai.png" alt="Chai"><img src="img/browserstack.png" alt="BrowserStack"><img src="img/testswarm.png" alt="TestSwarm"><img src="img/blanket.png" alt="Blanket.js"><img src="img/sinonjs.png" alt="Sinon.js"></p>
+
+<hr><h2>
+<a name="ferramentas-de-testes-4" class="anchor" href="#ferramentas-de-testes-4"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<ul>
+<li>Karma</li>
+<li>PhantomJS</li>
+<li>Chai</li>
+<li>Sinon.js
+
+<ul>
+<li>Spies, Stubs, Mocks, FakeTimer, FakeXHR</li>
+</ul>
+</li>
+<li>TestSwarm</li>
+<li>BrowserStack</li>
+<li>Istanbul</li>
+</ul><hr><h2>
+<a name="spies" class="anchor" href="#spies"><span class="octicon octicon-link"></span></a>Spies</h2>
+
+<p><img src="img/spy.jpg" alt="Spies"></p>
+
+<hr><h2>
+<a name="spies-1" class="anchor" href="#spies-1"><span class="octicon octicon-link"></span></a>Spies</h2>
+
+<ul>
+<li>Funções que informam sobre funções executadas
+
+<ul>
+<li>Chamadas</li>
+<li>Argumentos</li>
+<li>Contexto</li>
+<li>Retorno</li>
+<li>Exceções</li>
+</ul>
+</li>
+</ul><hr><h2>
+<a name="stubs" class="anchor" href="#stubs"><span class="octicon octicon-link"></span></a>Stubs</h2>
+
+<p><img src="img/real-spy.jpg" alt="Stubs"></p>
+
+<hr><h2>
+<a name="stubs-1" class="anchor" href="#stubs-1"><span class="octicon octicon-link"></span></a>Stubs</h2>
+
+<ul>
+<li>Spy com comportamento pré-estabelecido</li>
+<li>~Engana~ o fluxo do sistema
+
+<ul>
+<li>Especialmente útil para código com dependências</li>
+</ul>
+</li>
+</ul><hr><h2>
+<a name="mocks" class="anchor" href="#mocks"><span class="octicon octicon-link"></span></a>Mocks</h2>
+
+<p><img src="img/mocks.jpg" alt="Mocks"></p>
+
+<hr><h2>
+<a name="mocks-1" class="anchor" href="#mocks-1"><span class="octicon octicon-link"></span></a>Mocks</h2>
+
+<ul>
+<li>Métodos com comportamento pré-estabelecido</li>
+<li>Fazem seu código falhar se não forem executados corretamente</li>
+</ul><hr><h2>
+<a name="fakes" class="anchor" href="#fakes"><span class="octicon octicon-link"></span></a>Fakes</h2>
+
+<p><img src="img/fake.jpg" alt="Fakes"></p>
+
+<hr><h2>
+<a name="fakes-1" class="anchor" href="#fakes-1"><span class="octicon octicon-link"></span></a>Fakes</h2>
+
+<ul>
+<li>Mais simples do que Mocks</li>
+<li>Interface de objetos reais
+
+<ul>
+<li>Ex: Google Maps object</li>
+</ul>
+</li>
+</ul><hr><h2>
+<a name="m%C3%A3os-%C3%A0-massa" class="anchor" href="#m%C3%A3os-%C3%A0-massa"><span class="octicon octicon-link"></span></a>Mãos à massa</h2>
+
+<p><img src="img/show-me.jpg" alt="Show me, don't tell me"></p>
+
+<hr><h3>
+<a name="stack-utlizada" class="anchor" href="#stack-utlizada"><span class="octicon octicon-link"></span></a>Stack utlizada</h3>
+
+<ul>
+<li>Karma</li>
+<li>Mocha</li>
+<li>Chai (should)</li>
+<li>Sinon.js</li>
+</ul><hr><h2>
+<a name="configurando-o-karma" class="anchor" href="#configurando-o-karma"><span class="octicon octicon-link"></span></a>Configurando o Karma</h2>
+
+<pre><code>npm install karma --save-dev
+npm install -g karma-cli
+
+# Plugins
+npm install
+&gt; karma-mocha karma-chai karma-sinon karma-phantomjs-launcher
+&gt; --save-dev
+</code></pre>
+
+<pre><code>karma init
+karma start
+</code></pre>
+
+<p><em>karma.conf.js</em></p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+    <span class="c1">// ...</span>
+    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">'mocha'</span><span class="p">,</span> <span class="s1">'chai'</span><span class="p">,</span> <span class="s1">'sinon'</span><span class="p">],</span>
+    <span class="nx">files</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s1">'js/**/*.js'</span><span class="p">,</span>
+      <span class="s1">'test/**/*.js'</span>
+    <span class="p">],</span>
+    <span class="c1">// ...</span>
+</pre></div>
+
+<hr><h2>
+<a name="criando-o-primeiro-teste" class="anchor" href="#criando-o-primeiro-teste"><span class="octicon octicon-link"></span></a>Criando o primeiro teste</h2>
+
+<p>test/test.js</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"My first test suite"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should fail'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">true</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">false</span><span class="p">;</span>
+  <span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="criando-os-primeiros-testes" class="anchor" href="#criando-os-primeiros-testes"><span class="octicon octicon-link"></span></a>Criando os primeiros testes</h2>
+
+<h2>
+<a name="de-verdade" class="anchor" href="#de-verdade"><span class="octicon octicon-link"></span></a>(de verdade)</h2>
+
+<p>Arquivo <code>js/song.js</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Song</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">duration</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">=</span> <span class="nx">duration</span><span class="p">;</span> <span class="c1">// in seconds</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr><h2>
+<a name="criando-os-primeiros-testes-1" class="anchor" href="#criando-os-primeiros-testes-1"><span class="octicon octicon-link"></span></a>Criando os primeiros testes</h2>
+
+<p>Arquivo <code>test/song.js</code></p>
+
+<p><code>describe</code>, <code>beforeEach</code> e <code>expect().to.be.true</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s1">'Song'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">song</span><span class="p">;</span>
+    <span class="nx">beforeEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">154</span> <span class="p">);</span>
+    <span class="p">}</span> <span class="p">);</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should be a function'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Song</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">"function"</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="nx">it</span><span class="p">(</span><span class="s1">'should be playing after call play()'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">song</span><span class="p">.</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="comportamento-ass%C3%ADncrono" class="anchor" href="#comportamento-ass%C3%ADncrono"><span class="octicon octicon-link"></span></a>Comportamento assíncrono</h2>
+
+<p>Arquivo <code>test/song.js</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">(</span> <span class="nx">self</span> <span class="p">);</span>
+    <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nextSong</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">self</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nx">clearTimeout</span><span class="p">(</span> <span class="nx">self</span><span class="p">.</span><span class="nx">timer</span> <span class="p">);</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr><h2>
+<a name="clock-e-stubs" class="anchor" href="#clock-e-stubs"><span class="octicon octicon-link"></span></a>Clock e stubs</h2>
+
+<p>Sinon.js para alterar o clock e utilizar stubs</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">it</span><span class="p">(</span> <span class="s1">'should call nextSong after X seconts'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span> <span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s1">'nextSong'</span> <span class="p">);</span>
+
+    <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+    <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+<span class="p">}</span> <span class="p">);</span>
+
+</pre></div>
+
+<hr><h2>
+<a name="spies-2" class="anchor" href="#spies-2"><span class="octicon octicon-link"></span></a>Spies</h2>
+
+<p>Classe <code>js/player.js</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Player</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">Player</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">media</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span> <span class="nx">media</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">playList</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nx">media</span> <span class="k">instanceof</span> <span class="nx">Song</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr><h2>
+<a name="spies-3" class="anchor" href="#spies-3"><span class="octicon octicon-link"></span></a>Spies</h2>
+
+<p>Método <code>playNext()</code> da class <code>Player</code></p>
+
+<pre><code>Player.prototype.playNext = function() {
+    var currentSong;
+    if ( this.singleSong || this.playList) {
+        this.currentSongIndex += 1;
+        if ( this.singleSong &amp;&amp; this.currentSongIndex === 0 ) {
+            currentSong = this.singleSong;
+        } else if ( this.playList &amp;&amp; this.currentSongIndex &lt; this.playList.lenght ) {
+            currentSong = this.playList[this.currentSongIndex];
+        }
+        if ( currentSong instanceof Song ) {
+            currentSong.player = this;
+            currentSong.play();
+        }
+    }
+    return currentSong;
+};
+</code></pre>
+
+<hr><h2>
+<a name="spies-4" class="anchor" href="#spies-4"><span class="octicon octicon-link"></span></a>Spies</h2>
+
+<p>Testes com spies: <code>test/player.js</code></p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="nx">describe</span><span class="p">(</span> <span class="s1">'when playing a single song'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">it</span><span class="p">(</span> <span class="s1">'should play the only song and exit the player'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(),</span>
+              <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Player</span><span class="p">(),</span>
+              <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">120</span> <span class="p">),</span>
+              <span class="nx">playNextSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span> <span class="nx">player</span><span class="p">,</span> <span class="s1">'playNext'</span> <span class="p">),</span>
+              <span class="nx">playSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">song</span><span class="p">,</span> <span class="s1">'play'</span><span class="p">);</span>
+          <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
+          <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+          <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">calledTwice</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
+          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="kc">undefined</span> <span class="p">);</span>
+          <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+          <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+      <span class="p">}</span> <span class="p">)</span>
+  <span class="p">}</span> <span class="p">);</span>
+
+</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/jlucasps">jlucasps</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
