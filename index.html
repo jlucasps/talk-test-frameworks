@@ -107,6 +107,11 @@
 <p>Sim. Isso também significa integrá-los ao processo de build.</p>
 
 <hr><h2>
+<a name="testes-em-front-end" class="anchor" href="#testes-em-front-end"><span class="octicon octicon-link"></span></a>Testes em front-end</h2>
+
+<p><img src="img/test-diagram.png" alt="Diagrama básico de testes em front-end"></p>
+
+<hr><h2>
 <a name="ferramentas-de-testes" class="anchor" href="#ferramentas-de-testes"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
 
 <p><img src="img/tools.jpg" alt="Ferramentas de testes"></p>
@@ -114,85 +119,90 @@
 <hr><h2>
 <a name="ferramentas-de-testes-1" class="anchor" href="#ferramentas-de-testes-1"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
 
-<p><img src="img/jasmine.png" alt="Jasmine"></p>
+<p><a href="http://jasmine.github.io/"><img src="img/jasmine.png" alt="Jasmine"></a></p>
 
 <ul>
 <li>Matchers customizados, spies, async, clock</li>
 </ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"Calculator"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
-    <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">calc</span> <span class="o">=</span> <span class="nx">Calculator</span><span class="p">();</span>
-    <span class="p">});</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">'should sum two numbers'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="nx">result</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-    <span class="p">});</span>
+  <span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">calc</span> <span class="o">=</span> <span class="nx">Calculator</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should sum two numbers'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="p">});</span>
 <span class="p">});</span>
-</pre></div>
-
-<hr><h2>
-<a name="ferrametnas-de-testes" class="anchor" href="#ferrametnas-de-testes"><span class="octicon octicon-link"></span></a>Ferrametnas de testes</h2>
-
-<p><img src="img/qunit.png" alt="QUnit"></p>
-
-<ul>
-<li>jQuery project</li>
-<li>Focado em testar Javascript no browser</li>
-<li>Framework, Modules, Tests, Assertions</li>
-</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
-<span class="nx">module</span><span class="p">(</span> <span class="s2">"Awesome module"</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calc</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">teardown</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-<span class="p">}</span> <span class="p">);</span>
-
-<span class="nx">test</span><span class="p">(</span> <span class="s2">"sum"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="nx">deepEqual</span><span class="p">(</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">"Description"</span> <span class="p">);</span>
-    <span class="nx">equal</span><span class="p">(</span> <span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span> <span class="p">),</span> <span class="s2">"6"</span><span class="p">,</span> <span class="s2">"Description"</span> <span class="p">);</span>
-<span class="p">}</span> <span class="p">);</span>
 </pre></div>
 
 <hr><h2>
 <a name="ferramentas-de-testes-2" class="anchor" href="#ferramentas-de-testes-2"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
 
-<p><img src="img/mocha.png" alt="Mocha"></p>
+<p><a href="http://qunitjs.com/"><img src="img/qunit.png" alt="QUnit"></a></p>
 
 <ul>
-<li>Framework flexível e modular para node.js e browser</li>
-<li>Testes async e promisses</li>
-<li>Hooks <code>before, beforeEach, after, afterEach</code>
-</li>
-</ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"a test"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-            <span class="nx">foo</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="nx">done</span><span class="p">();</span>
-        <span class="p">},</span> <span class="mi">50</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s2">"should pass"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">expect</span><span class="p">(</span><span class="nx">foo</span><span class="p">).</span><span class="nx">equals</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="p">});</span>
+<li>jQuery project</li>
+<li>Focado em testar Javascript no browser</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">calc</span><span class="p">;</span>
+<span class="nx">module</span><span class="p">(</span><span class="s1">'Awesome module'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">calc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Calc</span><span class="p">();</span>
+  <span class="p">},</span>
+
+  <span class="nx">teardown</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">'sum'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="nx">deepEqual</span><span class="p">(</span><span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">'Description'</span><span class="p">);</span>
+  <span class="nx">equal</span><span class="p">(</span><span class="nx">calc</span><span class="p">.</span><span class="nx">sum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="s1">'6'</span><span class="p">,</span> <span class="s1">'Description'</span><span class="p">);</span>
+<span class="p">}</span> <span class="p">);</span>
 </pre></div>
 
 <hr><h2>
 <a name="ferramentas-de-testes-3" class="anchor" href="#ferramentas-de-testes-3"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
 
-<p><img src="img/buster.png" alt="Buster"></p>
+<p><a href="http://visionmedia.github.io/mocha/"><img src="img/mocha.png" alt="Mocha"></a></p>
+
+<ul>
+<li>Framework flexível e modular para node.js e browser</li>
+<li>Promise test, <code>before</code> &amp; <code>after</code> hooks</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"a promise test"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nx">save</span><span class="p">([</span><span class="nx">mark</span><span class="p">,</span> <span class="nx">loki</span><span class="p">,</span> <span class="nx">jane</span><span class="p">]);</span> <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should give me correct user count with callback'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'User'</span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+      <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should give me correct user count with promise'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">db</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'User'</span> <span class="p">}).</span><span class="nx">should</span><span class="p">.</span><span class="nx">eventually</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">length</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
+<a name="ferramentas-de-testes-4" class="anchor" href="#ferramentas-de-testes-4"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
+
+<p><a href="http://docs.busterjs.org/en/latest/#"><img src="img/buster.png" alt="Buster"></a></p>
 
 <ul>
 <li>Framework flexível e modular para node.js e browser</li>
 <li>Integrado com Sinon.JS</li>
 </ul><div class="highlight highlight-javascript"><pre><span class="nx">buster</span><span class="p">.</span><span class="nx">spec</span><span class="p">.</span><span class="nx">expose</span><span class="p">();</span>
 <span class="nx">describe</span><span class="p">(</span><span class="s2">"My thing"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s2">"has the foo and bar"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">expect</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s2">"states the obvious"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);;</span>
-    <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">"has the foo and bar"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s2">"bar"</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s2">"states the obvious"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);;</span>
+  <span class="p">});</span>
+
 <span class="p">});</span>
 </pre></div>
 
@@ -207,25 +217,15 @@
 </ul><hr><h2>
 <a name="ferramentas-utilit%C3%A1rias" class="anchor" href="#ferramentas-utilit%C3%A1rias"><span class="octicon octicon-link"></span></a>Ferramentas utilitárias</h2>
 
-<p><img src="img/karma.png" alt="Karma"><img src="img/phantomjs.png" alt="PhantomJS"><img src="img/chai.png" alt="Chai"><img src="img/browserstack.png" alt="BrowserStack"><img src="img/testswarm.png" alt="TestSwarm"><img src="img/blanket.png" alt="Blanket.js"><img src="img/sinonjs.png" alt="Sinon.js"></p>
+<p><a href="http://karma-runner.github.io/"><img src="img/karma.png" alt="Karma"></a>
+<a href="http://phantomjs.org/"><img src="img/phantomjs.png" alt="PhantomJS"></a>
+<a href="http://chaijs.com/"><img src="img/chai.png" alt="Chai"></a>
+<a href="http://www.browserstack.com/"><img src="img/browserstack.png" alt="BrowserStack"></a>
+<a href="http://testswarm.signalr.net/"><img src="img/testswarm.png" alt="TestSwarm"></a>
+<a href="http://blanketjs.org/"><img src="img/blanket.png" alt="Blanket.js"></a>
+<a href="http://sinonjs.org/"><img src="img/sinonjs.png" alt="Sinon.js"></a></p>
 
 <hr><h2>
-<a name="ferramentas-de-testes-4" class="anchor" href="#ferramentas-de-testes-4"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
-
-<ul>
-<li>Karma</li>
-<li>PhantomJS</li>
-<li>Chai</li>
-<li>Sinon.js
-
-<ul>
-<li>Spies, Stubs, Mocks, FakeTimer, FakeXHR</li>
-</ul>
-</li>
-<li>TestSwarm</li>
-<li>BrowserStack</li>
-<li>Istanbul</li>
-</ul><hr><h2>
 <a name="spies" class="anchor" href="#spies"><span class="octicon octicon-link"></span></a>Spies</h2>
 
 <p><img src="img/spy.jpg" alt="Spies"></p>
@@ -292,6 +292,25 @@
 
 <p><img src="img/show-me.jpg" alt="Show me, don't tell me"></p>
 
+<hr><h2>
+<a name="cen%C3%A1rio-1" class="anchor" href="#cen%C3%A1rio-1"><span class="octicon octicon-link"></span></a>Cenário</h2>
+
+<p>Player de música</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Player</span><span class="p">(),</span>    <span class="c1">// Music player</span>
+    <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">120</span> <span class="p">),</span>   <span class="c1">// single song</span>
+    <span class="nx">playList</span> <span class="o">=</span> <span class="p">[</span>              <span class="c1">// playlist</span>
+      <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">112</span> <span class="p">),</span>
+      <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">145</span> <span class="p">),</span>
+      <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">88</span> <span class="p">)</span>
+    <span class="p">];</span>
+
+<span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>          <span class="c1">// play and quit</span>
+
+<span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span> <span class="nx">playList</span> <span class="p">);</span>      <span class="c1">// play in sequence</span>
+
+</pre></div>
+
 <hr><h3>
 <a name="stack-utlizada" class="anchor" href="#stack-utlizada"><span class="octicon octicon-link"></span></a>Stack utlizada</h3>
 
@@ -352,12 +371,12 @@ karma start
 <p>Arquivo <code>js/song.js</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Song</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">duration</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">=</span> <span class="nx">duration</span><span class="p">;</span> <span class="c1">// in seconds</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">=</span> <span class="nx">duration</span><span class="p">;</span>     <span class="c1">// In seconds</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>      <span class="c1">// Song is playing</span>
 <span class="p">};</span>
 </pre></div>
 
@@ -369,17 +388,20 @@ karma start
 <p><code>describe</code>, <code>beforeEach</code> e <code>expect().to.be.true</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s1">'Song'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">song</span><span class="p">;</span>
-    <span class="nx">beforeEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">154</span> <span class="p">);</span>
-    <span class="p">}</span> <span class="p">);</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">'should be a function'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">Song</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">"function"</span><span class="p">);</span>
-    <span class="p">});</span>
-    <span class="nx">it</span><span class="p">(</span><span class="s1">'should be playing after call play()'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-        <span class="nx">expect</span><span class="p">(</span><span class="nx">song</span><span class="p">.</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
-    <span class="p">});</span>
+  <span class="kd">var</span> <span class="nx">song</span><span class="p">;</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">154</span> <span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should be a function'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Song</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">a</span><span class="p">(</span><span class="s2">"function"</span><span class="p">);</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should be playing after call play()'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">song</span><span class="p">.</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+  <span class="p">});</span>
 <span class="p">});</span>
 </pre></div>
 
@@ -389,16 +411,35 @@ karma start
 <p>Arquivo <code>test/song.js</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">(</span> <span class="nx">self</span> <span class="p">);</span>
-    <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>                <span class="c1">// Song is playing</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">self</span> <span class="p">);</span>         <span class="c1">// Play next song</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>            <span class="c1">// after X seconds</span>
 <span class="p">};</span>
-<span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nextSong</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">self</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="nx">self</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="nx">clearTimeout</span><span class="p">(</span> <span class="nx">self</span><span class="p">.</span><span class="nx">timer</span> <span class="p">);</span>
-    <span class="nx">self</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>
+
+<span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nextSong</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">isPlaying</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>             <span class="c1">// Song isn't playing</span>
+  <span class="nx">clearTimeout</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>             <span class="c1">// Play next song</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr><h2>
+<a name="comportamento-ass%C3%ADncrono-1" class="anchor" href="#comportamento-ass%C3%ADncrono-1"><span class="octicon octicon-link"></span></a>Comportamento assíncrono</h2>
+
+<p>Como verificar que <code>nextSong()</code> será chamada?</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">self</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">self</span> <span class="p">);</span>       <span class="c1">// Async call</span>
+  <span class="p">},</span> <span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nextSong</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>             <span class="c1">// Dependencies</span>
 <span class="p">};</span>
 </pre></div>
 
@@ -407,15 +448,20 @@ karma start
 
 <p>Sinon.js para alterar o clock e utilizar stubs</p>
 
-<div class="highlight highlight-javascript"><pre><span class="nx">it</span><span class="p">(</span> <span class="s1">'should call nextSong after X seconts'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
-    <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span> <span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s1">'nextSong'</span> <span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">song</span><span class="p">;</span>
+<span class="nx">beforeEach</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">120</span> <span class="p">);</span> <span class="c1">// 2 minutes</span>
+<span class="p">}</span> <span class="p">);</span>
 
-    <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
-    <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+<span class="nx">it</span><span class="p">(</span> <span class="s1">'should call nextSong after X seconds'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+  <span class="nx">sinon</span><span class="p">.</span><span class="nx">stub</span><span class="p">(</span> <span class="nx">Song</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="s1">'nextSong'</span> <span class="p">);</span> <span class="c1">// Song.prototype</span>
 
-    <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
-    <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+  <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+  <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+
+  <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">nextSong</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span> <span class="c1">// object song</span>
+  <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
 <span class="p">}</span> <span class="p">);</span>
 
 </pre></div>
@@ -426,65 +472,117 @@ karma start
 <p>Classe <code>js/player.js</code></p>
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Player</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">};</span>
+
 <span class="nx">Player</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">media</span> <span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span> <span class="nx">media</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">playList</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nx">media</span> <span class="k">instanceof</span> <span class="nx">Song</span> <span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span> <span class="nx">media</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">playList</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>            <span class="c1">// Save playlist</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="nx">media</span> <span class="k">instanceof</span> <span class="nx">Song</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="o">=</span> <span class="nx">media</span><span class="p">;</span>          <span class="c1">// Save a single song</span>
+  <span class="p">}</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">playNext</span><span class="p">();</span>                    <span class="c1">// Start playing</span>
 <span class="p">};</span>
 </pre></div>
 
 <hr><h2>
 <a name="spies-3" class="anchor" href="#spies-3"><span class="octicon octicon-link"></span></a>Spies</h2>
 
-<p>Método <code>playNext()</code> da class <code>Player</code></p>
+<p>Como verificar que <code>return currentSong;</code> está correto?</p>
 
-<pre><code>Player.prototype.playNext = function() {
-    var currentSong;
-    if ( this.singleSong || this.playList) {
-        this.currentSongIndex += 1;
-        if ( this.singleSong &amp;&amp; this.currentSongIndex === 0 ) {
-            currentSong = this.singleSong;
-        } else if ( this.playList &amp;&amp; this.currentSongIndex &lt; this.playList.lenght ) {
-            currentSong = this.playList[this.currentSongIndex];
-        }
-        if ( currentSong instanceof Song ) {
-            currentSong.player = this;
-            currentSong.play();
-        }
-    }
-    return currentSong;
-};
-</code></pre>
+<div class="highlight highlight-javascript"><pre><span class="nx">Player</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">playNext</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">currentSong</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="cm">/* single or playlist ? */</span> <span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Save single song</span>
+
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">playList</span> <span class="p">)</span> <span class="p">{</span>
+
+      <span class="c1">// Save from playlist</span>
+    <span class="p">}</span>
+
+    <span class="nx">currentSong</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>             <span class="c1">// Song will play</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">currentSong</span><span class="p">;</span>               <span class="c1">// Return song playing</span>
+<span class="p">};</span>
+</pre></div>
 
 <hr><h2>
 <a name="spies-4" class="anchor" href="#spies-4"><span class="octicon octicon-link"></span></a>Spies</h2>
 
+<p>Método <code>playNext()</code> da class <code>Player</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">Player</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">playNext</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">currentSong</span><span class="p">;</span>                    <span class="c1">// Song to play</span>
+  <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">playList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">===</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentSong</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">singleSong</span><span class="p">;</span>  <span class="c1">// Play single song</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">playList</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">playList</span><span class="p">.</span><span class="nx">lenght</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentSong</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">playList</span><span class="p">[</span><span class="k">this</span><span class="p">.</span><span class="nx">currentSongIndex</span><span class="p">];</span> <span class="c1">// From playlist</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">currentSong</span> <span class="k">instanceof</span> <span class="nx">Song</span> <span class="p">)</span> <span class="p">{</span>
+      <span class="nx">currentSong</span><span class="p">.</span><span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+      <span class="nx">currentSong</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>           <span class="c1">// Song will play</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">currentSong</span><span class="p">;</span>               <span class="c1">// Song playing</span>
+<span class="p">};</span>
+</pre></div>
+
+<hr><h2>
+<a name="spies-5" class="anchor" href="#spies-5"><span class="octicon octicon-link"></span></a>Spies</h2>
+
 <p>Testes com spies: <code>test/player.js</code></p>
 
-<div class="highlight highlight-javascript"><pre>  <span class="nx">describe</span><span class="p">(</span> <span class="s1">'when playing a single song'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">it</span><span class="p">(</span> <span class="s1">'should play the only song and exit the player'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-          <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(),</span>
-              <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Player</span><span class="p">(),</span>
-              <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">120</span> <span class="p">),</span>
-              <span class="nx">playNextSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span> <span class="nx">player</span><span class="p">,</span> <span class="s1">'playNext'</span> <span class="p">),</span>
-              <span class="nx">playSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">song</span><span class="p">,</span> <span class="s1">'play'</span><span class="p">);</span>
-          <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
-          <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
-          <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
-          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">calledTwice</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
-          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
-          <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="kc">undefined</span> <span class="p">);</span>
-          <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
-          <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
-      <span class="p">}</span> <span class="p">)</span>
-  <span class="p">}</span> <span class="p">);</span>
+<div class="highlight highlight-javascript"><pre><span class="nx">it</span><span class="p">(</span> <span class="s1">'should play the only song and exit the player'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">clock</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">(),</span>
+      <span class="nx">player</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Player</span><span class="p">(),</span> <span class="nx">song</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Song</span><span class="p">(</span> <span class="mi">120</span> <span class="p">),</span>
+      <span class="nx">playNextSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span> <span class="nx">player</span><span class="p">,</span> <span class="s1">'playNext'</span> <span class="p">),</span>
+      <span class="nx">playSpy</span> <span class="o">=</span> <span class="nx">sinon</span><span class="p">.</span><span class="nx">spy</span><span class="p">(</span><span class="nx">song</span><span class="p">,</span> <span class="s1">'play'</span><span class="p">);</span>
+
+  <span class="nx">player</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
+  <span class="nx">clock</span><span class="p">.</span><span class="nx">tick</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">duration</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+
+  <span class="nx">expect</span><span class="p">(</span> <span class="nx">song</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">calledOnce</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+  <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">calledTwice</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">true</span><span class="p">;</span>
+  <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="nx">song</span> <span class="p">);</span>
+  <span class="nx">expect</span><span class="p">(</span> <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">returnValues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">(</span> <span class="kc">undefined</span> <span class="p">);</span>
+
+  <span class="nx">playNextSpy</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+  <span class="nx">clock</span><span class="p">.</span><span class="nx">restore</span><span class="p">();</span>
+<span class="p">});</span>
 
 </pre></div>
+
+<hr><h2>
+<a name="perguntas-coment%C3%A1rios" class="anchor" href="#perguntas-coment%C3%A1rios"><span class="octicon octicon-link"></span></a>Perguntas? Comentários?</h2>
+
+<p><img src="img/questions.gif" alt="Perguntas? Comentários?"></p>
+
+<hr><h2>
+<a name="ui-test-frameworks-1" class="anchor" href="#ui-test-frameworks-1"><span class="octicon octicon-link"></span></a>UI Test Frameworks</h2>
+
+<p><a href="http://www.avenuecode.com.br/"><img src="img/avenuecode.jpg" alt="Avenue Code"></a></p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span> <span class="s2">"AVENUE CODE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span> <span class="s2">"IS HIRING!"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">expect</span><span class="p">(</span> <span class="nx">attendance</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">CV</span><span class="p">.</span><span class="nx">pdf</span> <span class="p">);</span>
+
+    <span class="nx">expect</span><span class="p">(</span> <span class="nx">myself</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">win</span><span class="p">(</span> <span class="nx">iPod</span><span class="p">.</span><span class="nx">SHUFFLE</span> <span class="p">);</span>
+
+  <span class="p">}</span> <span class="p">);</span>
+<span class="p">}</span> <span class="p">);</span>
+
+</pre></div>
+
+<p><br></p>
+
+<p>João Lucas ( <a href="https://github.com/jlucasps" class="user-mention">@jlucasps</a> ) &amp; Rafael Guedes ( <a href="https://github.com/rafaelmenta" class="user-mention">@rafaelmenta</a> )</p>
+
+<p>Front In BH - 2014</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/jlucasps">jlucasps</a></p>
