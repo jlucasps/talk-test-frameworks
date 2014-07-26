@@ -31,6 +31,10 @@
         <h1>
 <a name="ui-test-frameworks" class="anchor" href="#ui-test-frameworks"><span class="octicon octicon-link"></span></a>UI Test Frameworks</h1>
 
+<p><a href="http://www.avenuecode.com.br/"><img src="img/avenuecode.jpg" alt="Avenue Code"></a></p>
+
+<p><a href="http://frontinbh.com.br/"><img src="img/front-in-bh-2014-cover.jpg" alt="Front&lt;in&gt; BH"></a></p>
+
 <p><br></p>
 
 <p>João Lucas &amp; Rafael Guedes</p>
@@ -112,6 +116,26 @@
 <p><img src="img/test-diagram.png" alt="Diagrama básico de testes em front-end"></p>
 
 <hr><h2>
+<a name="criando-o-primeiro-teste" class="anchor" href="#criando-o-primeiro-teste"><span class="octicon octicon-link"></span></a>Criando o primeiro teste</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"My first test suite"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="nx">beforeEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// setup</span>
+  <span class="p">});</span>
+
+  <span class="nx">afterEach</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// cleanup</span>
+  <span class="p">});</span>
+
+  <span class="nx">it</span><span class="p">(</span><span class="s1">'should fail'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">true</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">false</span><span class="p">;</span>
+  <span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+
+<hr><h2>
 <a name="ferramentas-de-testes" class="anchor" href="#ferramentas-de-testes"><span class="octicon octicon-link"></span></a>Ferramentas de testes</h2>
 
 <p><img src="img/tools.jpg" alt="Ferramentas de testes"></p>
@@ -169,7 +193,7 @@
 <li>Framework flexível e modular para node.js e browser</li>
 <li>Promise test, <code>before</code> &amp; <code>after</code> hooks</li>
 </ul><div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"a promise test"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nx">save</span><span class="p">([</span><span class="nx">mark</span><span class="p">,</span> <span class="nx">loki</span><span class="p">,</span> <span class="nx">jane</span><span class="p">]);</span> <span class="p">});</span>
+  <span class="nx">before</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nx">save</span><span class="p">([</span><span class="nx">mark</span><span class="p">,</span> <span class="nx">amir</span><span class="p">,</span> <span class="nx">zeo</span><span class="p">]);</span> <span class="p">});</span>
 
   <span class="nx">it</span><span class="p">(</span><span class="s1">'should give me correct user count with callback'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">db</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'User'</span><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
@@ -177,9 +201,8 @@
       <span class="nx">done</span><span class="p">();</span>
     <span class="p">});</span>
   <span class="p">});</span>
-
   <span class="nx">it</span><span class="p">(</span><span class="s1">'should give me correct user count with promise'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">db</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'User'</span> <span class="p">}).</span><span class="nx">should</span><span class="p">.</span><span class="nx">eventually</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">length</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">db</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'User'</span> <span class="p">}).</span><span class="nx">should</span><span class="p">.</span><span class="nx">eventually</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">length</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
 </pre></div>
@@ -346,20 +369,6 @@ karma start
       <span class="s1">'test/**/*.js'</span>
     <span class="p">],</span>
     <span class="c1">// ...</span>
-</pre></div>
-
-<hr><h2>
-<a name="criando-o-primeiro-teste" class="anchor" href="#criando-o-primeiro-teste"><span class="octicon octicon-link"></span></a>Criando o primeiro teste</h2>
-
-<p>test/test.js</p>
-
-<div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span><span class="s2">"My first test suite"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-  <span class="nx">it</span><span class="p">(</span><span class="s1">'should fail'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kc">true</span><span class="p">.</span><span class="nx">should</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="kc">false</span><span class="p">;</span>
-  <span class="p">});</span>
-
-<span class="p">});</span>
 </pre></div>
 
 <hr><h2>
@@ -564,12 +573,12 @@ karma start
 <hr><h2>
 <a name="ui-test-frameworks-1" class="anchor" href="#ui-test-frameworks-1"><span class="octicon octicon-link"></span></a>UI Test Frameworks</h2>
 
-<p><a href="http://www.avenuecode.com.br/"><img src="img/avenuecode.jpg" alt="Avenue Code"></a></p>
+<p><a href="http://www.avenuecode.com.br/"><img src="img/avenuecode.jpg" alt="Avenue Code"></a> <a href="http://frontinbh.com.br/"><img src="img/front-in-bh-2014-cover.jpg" alt="Front&lt;in&gt; BH"></a></p>
 
 <div class="highlight highlight-javascript"><pre><span class="nx">describe</span><span class="p">(</span> <span class="s2">"AVENUE CODE"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">it</span><span class="p">(</span> <span class="s2">"IS HIRING!"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
 
-    <span class="nx">expect</span><span class="p">(</span> <span class="nx">attendance</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">CV</span><span class="p">.</span><span class="nx">pdf</span> <span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span> <span class="nx">audience</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span> <span class="nx">CV</span><span class="p">.</span><span class="nx">pdf</span> <span class="p">);</span>
 
     <span class="nx">expect</span><span class="p">(</span> <span class="nx">myself</span> <span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">win</span><span class="p">(</span> <span class="nx">iPod</span><span class="p">.</span><span class="nx">SHUFFLE</span> <span class="p">);</span>
 
@@ -579,6 +588,8 @@ karma start
 </pre></div>
 
 <p><br></p>
+
+<p>Muito Obrigado!</p>
 
 <p>João Lucas ( <a href="https://github.com/jlucasps" class="user-mention">@jlucasps</a> ) &amp; Rafael Guedes ( <a href="https://github.com/rafaelmenta" class="user-mention">@rafaelmenta</a> )</p>
 
